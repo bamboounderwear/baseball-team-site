@@ -1,0 +1,30 @@
+{
+  // Replace the placeholders for real IDs after creating resources.
+  "name": "baseball-team-site",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-03-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": { "directory": "frontend/dist" },
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "BASEBALL_DB",
+      "database_id": "defb9b9b-a741-4b70-9a37-411a88ba11bb"
+    }
+  ],
+  "kv_namespaces": [
+    { "binding": "CART", "id": "e4d0508fee43496fb15ad4bd7c2f563e" }
+  ],
+  "analytics_engine_datasets": [
+    { "binding": "ANALYTICS", "dataset": "baseball_analytics" }
+  ],
+  "vars": {
+    // Generate a strong secret for production
+    "ADMIN_JWT_SECRET": "cf62fde25ae3c9f9130ee06d44b1b90545666bcadb9e71fcea7fe8d0b43354c2"
+  },
+  "limits": {
+    "cpu_ms": 50000
+  }
+}
